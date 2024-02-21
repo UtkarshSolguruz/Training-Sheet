@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" min="100" max="300" id="num1" required>
+    <button onclick="myFunc()">submit</button>
+    <p id="demo"></p>
+    <script>
+        function myFunc(){
+            const inpObj = document.getElementById('num1');
+            if(!inpObj.checkValidity()){
+                document.getElementById('demo').innerHTML=inpObj.validationMessage;
+            }
+            else{
+                document.getElementById('demo').innerHTML="Input OK";
+            }
+        }
+    </script>
+    <input type="number" min="100" id="number">
+    <button onclick="myFunction()">Click</button>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction(){
+            let text = document.getElementById('demo');
+            if(document.getElementById('number').validity.rangeUnderflow){
+                text.innerHTML = "Value too small";
+            }else{
+                text.innerHTML="Input OK";
+            }
+        }
+    </script>
+
+</body>
+</html>

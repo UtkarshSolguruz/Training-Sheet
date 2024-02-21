@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+        .parent{
+            border: 1px solid blue;
+            width: 50%;
+        }
+        .child{
+            border: 1px solid red;
+            width: 70%;
+            position: relative;
+            top: 15px;
+        }
+
+        .parent2{
+            border: 1px solid red;
+            width: 50%;
+            position: absolute;
+            top: 100px;
+        }
+
+        .child2{
+            border: 1px solid blue;
+            width: 70%;
+            top: 15px;
+            left: 15px;
+            /* position: absolute; */
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="parent">
+            this is parent div.
+            *relative*
+            <div class="child">
+                <p>this is child div.</p>
+            </div>
+        </div>
+        <div class="parent2">
+            this is parent div
+            *absolute*
+            <div class="child2">
+                this is child div
+            </div>
+        </div>
+    </div>
+</body>
+</html>

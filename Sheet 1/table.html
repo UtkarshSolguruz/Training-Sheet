@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: space-between;
+        }
+        td{
+            font-size: xx-large;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        table{
+            height: 500px;
+            width: 500px;
+            padding: 0.5%;
+            background-color: beige;
+        }
+        table td{
+            background-color: white;
+        }
+
+        table th{
+            background-color: white;
+            font-size: xx-large;
+            padding: 3.5%;
+        }
+
+        .refImage{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        tfoot td{
+            padding: 3%;
+        }
+    </style>
+</head>
+<body>
+    <table border="1px solid black">
+        <thead>
+            <tr>
+                <th colspan="3">header</td>
+            </tr>
+        </thead>
+        <tr>
+            <td colspan="3">navigation bar</td>
+        </tr>
+        <tr>
+            <td colspan="2">section</td>
+            <td rowspan="2">aside</td>
+        </tr>
+        <tr>
+            <td colspan="2">article</td>
+        </tr>
+        <tfoot>
+            <td colspan="3">Footer</td>
+        </tfoot>
+    </table>
+    <div class="refImage">
+        <img src="referance image.gif" width="500" height="500"/>
+        <p>referance image: <a href="https://www.w3schools.com/html/html5_semantic_elements.asp">w3schools</a></p>
+    </div>
+</body>
+</html>

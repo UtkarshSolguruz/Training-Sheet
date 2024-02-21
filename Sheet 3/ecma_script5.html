@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        // CharAt
+        // var str = "Hello World!"
+        // document.getElementById('demo').innerHTML=str.charAt(0);
+
+        // Reserved words as property names
+        // var obj = {name: 'Utkarsh', age:20}
+        // document.getElementById('demo').innerHTML="name: "+obj.name+"<br> age: "+obj.age;
+
+        // trim()
+        // var str = "     test!      ";
+        // alert(str.trim())
+
+        // isArray()
+        // function myFunction(){
+        //     var a = "utkarsh";
+        //     var fruits = ['Banana', 'Orange'];
+        //     document.getElementById('demo').innerHTML=Array.isArray(fruits);
+        // }
+        // myFunction()
+
+
+        // forEach()
+        // var txt = "";
+        // var numbers = [1,2,3,4,5];
+        // numbers.forEach(myFunction);
+        // document.getElementById('demo').innerHTML=txt;
+        // function myFunction(value){
+        //     txt = txt + value + "<br>";
+        // }
+
+        // array map
+        // var numbers1 = [1,2,3,4,5]
+        // var numbers2 = numbers1.map(myFunction);
+        // document.getElementById('demo').innerHTML=numbers2;
+        // function myFunction(value){
+        //     return value * 2;
+        // }
+
+        // array filter
+        // var numbers = [45,6,12,69,5];
+        // var over18 = numbers.filter(myFunction);
+        
+        // function myFunction(value){
+        //     return value>18;
+        // }
+
+        // document.getElementById('demo').innerHTML=over18;
+
+        // array reduce
+        // var numbers = [1,2,3,4,5]
+        // var sum = numbers.reduce(myFunction);
+        
+        // function myFunction(total, value){
+        //     return total + value;
+        // }
+
+        // document.getElementById('demo').innerHTML=sum;
+        
+
+        // reduceRight
+        // var numbers = [1,2,3,4,5];
+        // var sum = numbers.reduceRight(myFunction);
+
+        // function myFunction(total, value){
+        //     return total + value;
+        // }
+
+        // document.getElementById('demo').innerHTML=sum;
+
+
+        // every
+        // var numbers = [1,2,3,4,5]
+        // var allover18 = numbers.every(myFunction);
+
+        // function myFunction(v){
+        //     return v>18;
+        // }
+
+        // document.getElementById('demo').innerHTML=allover18;
+
+        // some
+        // var numbers = [1,2,19,3,5];
+        // var someOver18 = numbers.some(myFunction);
+
+        // function myFunction(value){
+        //     return value>18;
+        // }
+
+        // document.getElementById('demo').innerHTML=someOver18;
+
+
+        // indexOf()
+        // var fruits = ['apple','banana','cherry','mango']
+        // var a = fruits.indexOf('mango')
+        // document.getElementById('demo').innerHTML=a;
+
+        
+        // lastIndexOf()
+        // var fruits = ['apple','banana','apple','mango']
+        // var a = fruits.lastIndexOf('apple')+1;
+        // document.getElementById('demo').innerHTML=a;
+
+        // parse 
+        // const txt = '{"name":"Utkarsh", "age":"20"}';
+        // const obj = JSON.parse(txt);
+        // document.getElementById('demo').innerHTML=obj.name;
+
+        // stringify
+        // const txt = '{"name":"Utkarsh", "age":"20"}';
+        // myJson = JSON.stringify(txt);
+        // document.getElementById('demo').innerHTML=myJson;
+
+
+        // Date.Now() returns the number is milliseconds since zero date i.e 1st Jan, 1980
+        // var time = Date.now()
+        // document.getElementById('demo').innerHTML=time;
+
+
+        // Date toJSON()
+        // d = new Date();
+        // document.getElementById('demo').innerHTML=d.toJSON();
+
+        // Date toISOString()
+        // d = new Date();
+        // document.getElementById('demo').innerHTML=d.toISOString();
+
+        
+        
+        // GETTER
+        // var person = {firstname:"utkarsh", lastname:"varma",
+        //                 get fullname(){
+        //                     return this.firstname+" "+this.lastname
+        //                 }
+        //             }
+        // document.getElementById('demo').innerHTML=person.fullname;
+
+
+        // SET
+        // var person = {firstname: "utkarsh", lastname:"varma", language:"NO", 
+        // set lang(value){
+        //     this.language = value;
+        // }}
+
+        // person.lang = 'en';
+
+        // document.getElementById('demo').innerHTML=person.language;
+
+        // SETTER AND GETTER
+        // var person = {firstname:"utkarsh",lastname:"varma",language:"NO",
+        //             get lang(){
+        //                 return this.language;
+        //             },
+        //             set lang(value){
+        //                 this.language = value;
+        //             }
+        //             }
+        // person.lang = "en";
+        // document.getElementById('demo').innerHTML=person.lang;
+
+        // BIND
+        // const person = {
+        //     firstname:"utkarsh",
+        //     lastname:"varma",
+        //     fullname: ()=>{
+        //         return this.firstname+" "+this.lastname;
+        //     }
+        // }
+        // const member = {
+        //     firstname: "prit",
+        //     lastname:"patel"
+        // }
+
+        // let fullname = person.fullname.bind(member);
+        // document.getElementById('demo').innerHTML=fullname();
+    </script>   
+</body>
+</html>

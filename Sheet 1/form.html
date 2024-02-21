@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        fieldset{
+            height: 400px;
+            width: 400px;            
+        }
+        input{
+            width: 95%;
+            padding: 10px;
+            margin-top: 5%;
+        }
+        button{
+            width: 101%;
+            margin-top: 7%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Personal Details:</legend>
+        <form>
+            <input type="text" placeholder="Enter your first name:" required>
+            <input type="text" placeholder="Enter your last name:" required>
+            <input type="number" placeholder="Enter your mobile number"> 
+            <input type="email" placeholder="Enter your email id">
+            <input type="password" placeholder="Enter your password:" maxlength="8" minlength="3">
+        </form>
+    </fieldset>
+    <script>
+        function handleSubmit(){
+            alert("your form has been submitted");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" >
+        <input type="date" id="d"><br>
+        <input type="datetime-local" id="dt"><br>
+        <input type="email" id="email"><br>
+        <input type="month" id="month"><br>
+        <input type="number" id="num" placeholder="enter a number"><br>
+        <input type="range" min="1" max="100" id="range"><br>
+        <input type="search" placeholder="search a keyword" id="search"><br>
+        <input type="tel" placeholder="enter a telephone number" id="tel"><br>
+        <input type="time" placeholder="time" id="t"><br>
+        <input type="url" placeholder="url" id="url"><br>
+        <input type="week" placeholder="week" id="week"><br>
+        <p>Which one is your fav language?</p><br>
+        <input type="radio" id="html" class="programming_language" name="pl" value="html">HTML
+        <input type="radio" id="css" class="programming_language" name="pl" >CSS
+        <input type="radio" id="js" class="programming_language" name="pl" >JavaScript<br>
+        <p>which games do you want to play?</p>
+        <input type="checkbox" class="check_games" value="B" id="b">Badminton
+        <input type="checkbox" class="check_games" value="C" id="c">Cricket
+        <input type="checkbox" class="check_games" value="F" id=f>Football<br>
+        <button type="button" onclick="myFunc()">Submit</button>
+    </form>
+    <script>
+        function myFunc(){
+            const a = document.getElementById('d').value;
+            console.log(a);
+            
+            const b = document.getElementById('dt').value;
+            console.log(b);
+
+            const c = document.getElementById('email').value;
+            console.log(c)
+
+            const d = document.getElementById('month').value;
+            console.log(d)
+
+            const e = document.getElementById('num').value;
+            console.log(e)
+
+            const f = document.getElementById('range').value;
+            console.log(f)
+
+            const g = document.getElementById('search').value;
+            console.log(g)
+
+            const h = document.getElementById('tel').value;
+            console.log(h);
+
+            const i = document.getElementById('url').value;
+            console.log(i)
+
+            const j = document.getElementById('week').value;
+            console.log(j)
+
+            if(document.getElementById('html').checked){
+                console.log(document.getElementById('html').value);
+            }
+            else if(document.getElementById('css').checked){
+                console.log(document.getElementById('css').value)
+            }
+            else if(document.getElementById('js').checked){
+                console.log(document.getElementById('js').value)
+            }else{
+                console.log('radio button unchecked')
+            }
+
+            const k = document.getElementById('b');
+            const l = document.getElementById('c');
+            const m = document.getElementById('f');
+            if(k.checked){
+                console.log(k.value);
+            }
+            else if(l.checked){
+                console.log(l.value)
+            }
+            else if(m.checked){
+                console.log(m.value)
+            }
+            else if(k.checked && l.checked && m.checked){
+                console.log('all selected')
+            }
+            else{
+                console.log('none selected')
+            }
+        }
+    </script>
+</body>
+</html>
