@@ -260,3 +260,6 @@ const findDuplicate = () =>{
     const duplicates = arr.filter((item,index)=>arr.indexOf(item)!=index);
     console.log(duplicates);
 }
+
+
+// git change
