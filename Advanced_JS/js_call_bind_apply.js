@@ -7,7 +7,7 @@ let fullName =  function(town, state){
     console.log(this.firstName+" "+this.lastName+" "+town+" "+state);
 }
 
-fullName.call(name, 'ahmedabad','gujarat')
+fullName.call(name)
 
 let name2 = {
     firstName:'sachin',

@@ -17,3 +17,15 @@ p.__proto__ = {
 
 console.log(a.lastname)
 console.log(a.jobpost)
+
+
+//custom push function 
+Array.prototype.myPush = (val)=>{
+    arr[arr.length] = val;
+}
+
+let arr = [1,2,3,4,5,6];
+arr.myPush(7);
+console.log(arr);
+
+

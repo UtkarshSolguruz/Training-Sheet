@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="json_style.css">
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="main">
+        <div class="container" id="form">
+            <input type="number" placeholder="enter product id" id="id">
+            <p id="p-id" style="color: red;"></p>
+            <input type="number" placeholder="enter product part no." id="partno">
+            <p id="p-partno" style="color: red;"></p>
+            <input type="text" placeholder="enter product name" id="name">
+            <p id="p-name" style="color: red;"></p>
+            <input type="number" placeholder="add weight" style="display: none;" id="weight">
+            <input type="text" placeholder="add company details" style="display: none;" id="company">
+            <fieldset>
+                <legend>Select Product Size:</legend>
+                <input type="radio" name="size" value="small">Small
+                <input type="radio" name="size" value="medium">Medium
+                <input type="radio" name="size" value="large">Large
+                <p id="size" style="color: red;"></p>
+            </fieldset>
+            <fieldset>
+                <legend>Select Product Color:</legend>
+                <label for="red">Red<input type="checkbox" id="red" value="red"></label>
+                <label for="green">Green<input type="checkbox" id="green" value="green"></label>
+                <label for="blue">Blue<input type="checkbox" id="blue" value="blue"></label>
+                <p id="color" style="color: red;"></p>
+            </fieldset>
+            <textarea name="description" id="description" cols="20" rows="10" placeholder="Enter product description"></textarea>
+            <p id="description" style="color: red;"></p>
+            <button onclick="getData()">Submit</button>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="addWeight()" id="w-btn">add Weight</button>
+            <button onclick="wDone()" id="d-btn" style="display: none;">Done</button>
+            <button onclick="removeName()">Delete By Name</button>
+            <button onclick="removeId()">Delete by id</button>
+            <button onclick="modifyName()">Modify by Name</button>
+            <!-- <button onclick="editData()">Edit</button>   -->
+        </div>  
+        <!-- <div id="selector" style="display: none;">
+            <p>How do you want to edit the table?</p>
+            <div class="inside-selector">
+                <button onclick="nameButton()">Name</button>
+                <button onclick="editByID()">ID</button>
+            </div>
+        <button onclick="home()">Home</button>  
+        </div> -->
+        <!-- <div id="del-selector" style="display: none;">
+            <p>Delete the table using?</p>
+            <div class="inside-selector">
+                <button>Name</button>
+                <button>ID</button>
+            </div>
+        <button onclick="home()">Home</button> 
+        </div> -->
+        <div class="table">
+            <div class="search-area" style="display: flex; justify-content: space-between;">
+                <input type="search" style="width: 78%; margin-bottom: 5px; padding: 5px;" id="search" onchange="searchData()">
+            <select style="width: 20%; padding: 5px; height: 30px;" onchange="sort()" id="select">
+                <option value="normal">--select--</option>
+                <option value="id">ID</option>
+                <option value="descid">Descending ID</option>
+                <option value="partno">Part no</option>
+                <option value="descpart">Descending Part no</option>
+                <option value="name">Name</option>
+            </select>
+            </div>
+            <table>
+                <thead>
+                    <th>Sr no.</th>
+                    <th>ID</th>
+                    <th>partNo.</th>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Color</th>
+                    <th>Description</th>
+                    <th>Weight</th>
+                    <th>Company Details</th>
+                </thead>
+                <tbody id="content">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="json_script.js"></script>
+</body>
+    </html>
+</body>
+</html>
