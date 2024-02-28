@@ -1,0 +1,126 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+table{
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+
+.label{
+    font-size: medium;
+}
+
+.form-input{
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1.5px solid black;
+    transition: box-shadow;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    transition-delay: 100ms;
+}
+
+.form-input:hover{
+    border: 1.5px solid #0d6efd;
+}
+
+.form-input:focus{
+    border: 1.5px solid #0d6efd;
+    box-shadow: 0 0 15px #0d6efd;
+    outline: none;
+}
+
+.form-input::placeholder{
+    font-size: medium;
+}
+
+#submit-btn{
+    padding: 10px;
+    width: 100%;
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: large;
+}
+
+#reset-btn{
+    padding: 10px;
+    width: 62%;
+    background-color: #5cb85c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: large;
+}
+
+.printingcontent{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#printtable{
+    width: 99%;
+}
+
+
+.search-bar{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-bar input{
+    width: 90%;
+    margin-left: 10px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.search-bar input:hover{
+    border: 1px solid #f0ad4e;
+}
+.search-bar input:focus{
+    border: 1.5px solid #f0ad4e;
+    outline: none;
+}
+
+.search-bar button{
+    margin-right: 10px;
+    width: 8%;
+    border-radius: 5px;
+    border: none;
+    background-color: #f0ad4e;
+    color: black;
+}
+
+
+#edit{
+    background-color: #f0ad4e;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+#delete{
+    background-color: #d9534f;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
