@@ -37,10 +37,14 @@ table{
     text-align: center;
     width: 100%;
     border: 1px solid black;
+    border-collapse: collapse;
 }
 
 table tr td{
-    border: 1px solid black;
+    border: 1.5px solid black;
+}
+table thead th{
+    border: 2px solid black;
 }
 
 #selector{

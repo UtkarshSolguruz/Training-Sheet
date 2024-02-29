@@ -19,7 +19,6 @@ function validate() {
     let hyphen = /^(?!0\d)\d+$/;
     
     let nameError = '';
-    exists(nameError);
     if(productName === ""){
         nameError = "Name field is empty";  
     }
@@ -38,9 +37,7 @@ function validate() {
     else if(!specialCharacters.test(productName)){
         nameError = "special characters are not allowed"
     }
-    // else if(!numbersAndSpecial.test(productName)){
-    //     nameError = "numbers or special characters should not be present";
-    // }
+
 
 
     // quantity
@@ -131,7 +128,7 @@ function validate() {
 
 function check(productName) {
     if (typeof productName === 'string') {
-        return products.some(product => product.name.toLowerCase() === productName.toLowerCase());
+        return products.some(product => product.name.toLowerCase() === productName.toLowerCase())
     }
     return false
 }

@@ -24,11 +24,17 @@
             <input type="text" placeholder="enter product name" id="name">
             <p id="p-name" style="color: red;"></p>
             <input type="number" placeholder="add weight" style="display: none;" id="weight">
-            <input type="text" placeholder="add company details" style="display: none;" id="company">
+            <p id="p-weight" style="display: none; color: red;" ></p>
+            <input type="text" placeholder="enter company name" style="display: none;" id="company">
+            <p id="c-name" style="display: none; color:red"></p>
+            <textarea name="company-add" id="company-add" cols="30" rows="5" style="display: none; padding: 5px;" placeholder="enter company address" ></textarea>
+            <p id="c-add" style="display: none; color:red"></p>
+            <input type="date" id="date" style="display: none;">
+            <p id="c-date" style="display: none; color:red"></p>
             <fieldset>
                 <legend>Select Product Size:</legend>
                 <input type="radio" name="size" value="small">Small
-                <input type="radio" name="size" value="medium">Medium
+                <input type="radio" name="size" color:red value="medium">Medium
                 <input type="radio" name="size" value="large">Large
                 <p id="size" style="color: red;"></p>
             </fieldset>
@@ -39,16 +45,18 @@
                 <label for="blue">Blue<input type="checkbox" id="blue" value="blue"></label>
                 <p id="color" style="color: red;"></p>
             </fieldset>
-            <textarea name="description" id="description" cols="20" rows="10" placeholder="Enter product description"></textarea>
-            <p id="description" style="color: red;"></p>
+            <textarea name="description" id="description" cols="20" rows="10" placeholder="Enter product description" style="padding: 5px;"></textarea>
+            <p id="p-description" style="color: red;"></p>
             <button onclick="getData()">Submit</button>
             <button onclick="resetForm()">Reset</button>
-            <button onclick="addWeight()" id="w-btn">add Weight</button>
+            <button onclick="addWeight()" id="w-btn">Add Weight</button>
             <button onclick="wDone()" id="d-btn" style="display: none;">Done</button>
             <button onclick="removeName()">Delete By Name</button>
-            <button onclick="removeId()">Delete by id</button>
+            <button onclick="removeId()">Delete by ID</button>
             <button onclick="modifyName()">Modify by Name</button>
-            <!-- <button onclick="editData()">Edit</button>   -->
+            <button onclick="modifyId()">Modify by ID</button>
+            <button onclick="addCompany()" id="c-btn">Add Company</button>
+            <button onclick="cDone()" style="display: none;" id="cd-btn">Done</button>
         </div>  
         <!-- <div id="selector" style="display: none;">
             <p>How do you want to edit the table?</p>
@@ -68,7 +76,7 @@
         </div> -->
         <div class="table">
             <div class="search-area" style="display: flex; justify-content: space-between;">
-                <input type="search" style="width: 78%; margin-bottom: 5px; padding: 5px;" id="search" onchange="searchData()">
+                <input type="search" style="width: 78%; margin-bottom: 5px; padding: 5px;" id="search" oninput="searchData()">
             <select style="width: 20%; padding: 5px; height: 30px;" onchange="sort()" id="select">
                 <option value="normal">--select--</option>
                 <option value="id">ID</option>
@@ -98,6 +106,6 @@
     </div>
     <script src="json_script.js"></script>
 </body>
-    </html>
+</html>
 </body>
 </html>
