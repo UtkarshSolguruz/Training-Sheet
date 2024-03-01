@@ -16,15 +16,15 @@ function validate() {
     let numbers = /^([^0-9]*)$/
     let specialCharacters = /^[a-zA-Z0-9_]+$/;
     let space = /^[^\s]+$/;
-    let hyphen = /^(?!0\d)\d+$/;
+    let hyphen = /-/;
     
-    
+
     let nameError = '';
     if(productName === ""){
         nameError = "Name field is empty";  
     }
-    else if(!hyphen.test(productName)){
-        nameError == "hyphens are not allowed in this form."
+    else if(hyphen.test(productName)){
+        nameError = "hyphens are not allowed in this form."
     }
     else if(!spaceRegex.test(productName)){
         nameError = "Product name should not start with a blank space";
@@ -128,7 +128,6 @@ function validate() {
 }
 
 function check(productName) {
-    console.log(productName)
     if (typeof productName === 'string') {
         return products.some(product => product.name.toLowerCase() === productName.toLowerCase())
     }

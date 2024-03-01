@@ -20,6 +20,12 @@ function validate(){
     // validation regular expressions
     let pattern = /^(?![\s\d])[a-zA-Z]+(?:[\s]{1}[a-zA-Z]+)*[\s]*$/;
     let pattern1 = /^[+-]?[0-9]+$/
+    let spaceRegex = /^[^ ]/;
+    let twoSpace = /^(?:(?!\s\s).)*$/;
+    let numbers = /^([^0-9]*)$/;
+    let specialCharacters = /^[a-zA-Z0-9_]+$/;
+    let space = /^[^\s]+$/;
+    let hyphen = /[-]/;
 
 
     // id
@@ -38,23 +44,56 @@ function validate(){
 
     // partno
     let partError = "";
-    if(!pattern1.test(productPartNo)){
-        partError = 'input cannot be empty and special characters cannot be used.';
+
+    if(productPartNo == "") {
+        partError = "Input Field Empty";
+        console.log("hey")
     }
-    else if(productPartNo<0){
-        partError="ID cannot be negetive";
+    else if(hyphen.test(productPartNo.toString())){
+        partError = "invalid input"
+        console.log("hello")
+    }
+    else if(!specialCharacters.test(productPartNo)){
+        partError = "special characters not allowed"
+    }
+    else if(!startWithZero.test(productPartNo)){
+        partError = "Quantity should not start with zero.";
+    }
+    else if(productPartNo < 1){
+        partError = "only positive numbers are allowed";
+    }
+    else if(!spaceRegex.test(productPartNo)){
+        partError = "field should not start with a blank space";
+    }
+    else if(!space.test(productPartNoy)){
+        partError = "cannot have space between numbers";
+    }
+    else if(!onlyNumbers.test(productPartNo)){
+        partError = "only numbers are required for this field";
     }
     else if(productPartNo>10000){
-        partError="Id should be less than 10000"
+        partError = "quantity should be less than 10000.";
     }
 
     // name
     let nameError = '';
     if(productName === ""){
-        nameError = "Name field is empty";
-    } 
-    else if(!pattern.test(productName)){
-        nameError = "invalid input";
+        nameError = "Name field is empty";  
+    }
+    else if(hyphen.test(productName)){
+        nameError = "hyphens are not allowed in this form."
+    }
+    else if(!spaceRegex.test(productName)){
+        nameError = "Product name should not start with a blank space";
+    }
+    else if (!twoSpace.test(productName)){
+        nameError = "Product name should not have more than one space in between";
+    }
+    else if(!numbers.test(productName)){
+        nameError = "numbers should not be present"
+    }
+    else if(!specialCharacters.test(productName)){
+        nameError = "special characters are not allowed"
     }
 
     // checkbox
@@ -88,6 +127,10 @@ function validate(){
     else if(productWeight == 0 && weightFlag == false){
         weightError = "Weight cannot be zero";
         weightFlag = true
+    }
+    else if(productWeight>1000 && weightFlag == false){
+        weightError="weight connot be more than 1000";
+        weightFlag=true;
     }
 
     // company details
