@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: sans-serif;
+        }
+        .navbar{
+            background-color: lightgray;
+            font-size: xx-large;
+            padding: 15px 0;
+            border-bottom: 1px solid black;
+        }
+        .navbar p{
+            margin-left: 10px;
+        }
+        table{
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        tbody tr td{
+            border-bottom: 1px solid black;
+            padding: 10px;
+            align-items: center;
+        }
+        thead tr th{
+            border-bottom: 1px solid black;
+            padding: 10px;
+        }
+        #container{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <p>Inventory Details</p>
+    </div>
+    <div id="container">
+        <div id="image">
+            <h3>Product Image</h3>
+            <img id="images">
+        </div>
+        <div id="content1">
+           <table style="width: 100%;">
+            <thead align="left">
+                <th>Product Name</th>
+                <th>SKU</th>
+                <th>Weight</th>
+            </thead>
+            <tbody id="display1">
+
+            </tbody>
+        </table>
+        <table style="width: 100%;">
+            <thead align="left">
+                <th>Product Category</th>
+                <th>Supplier</th>
+                <th>Stock Quantity</th>
+            </thead>
+            <tbody id="display2">
+                
+            </tbody>
+        </table>
+        <table style="width: 70%;">
+            <thead align="left">
+                <th>Min Stock Quantity</th>
+                <th>Stock Status</th>
+            </thead>
+            <tbody id="display3">
+
+            </tbody>
+        </table>
+        </div> 
+    </div>
+    <h3>Stock History</h3>
+    <table style="width: 100%;">        
+        <thead style="background-color: lightgrey;">
+            <th>Sr. no.</th>
+            <th>Stock Quantity</th>
+            <th>Added On</th>
+            <th>Expiry Date</th>
+        </thead>
+        <tbody id="content" align="center">
+
+        </tbody>
+    </table>
+    <script src="practise.js"></script>
+</body>
+</html>
+
+
