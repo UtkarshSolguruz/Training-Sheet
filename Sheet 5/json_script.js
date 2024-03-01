@@ -19,14 +19,15 @@ function validate(){
 
     // validation regular expressions
     let pattern = /^(?![\s\d])[a-zA-Z]+(?:[\s]{1}[a-zA-Z]+)*[\s]*$/;
+    let pattern1 = /^[+-]?[0-9]+$/
 
 
     // id
     let idError = "";
-    if(productId === ""){
-        idError="input empty";
+    if(!pattern1.test(productId)){
+        idError = "input cannot be empty and special characters cannot be used  "
     }
-    else if(productId<0){
+    if(productId<0){
         idError="ID cannot be negetive";
     }
     else if(productId>10000){
@@ -37,8 +38,8 @@ function validate(){
 
     // partno
     let partError = "";
-    if(productPartNo === ""){
-        partError = 'input empty.';
+    if(!pattern1.test(productPartNo)){
+        partError = 'input cannot be empty and special characters cannot be used.';
     }
     else if(productPartNo<0){
         partError="ID cannot be negetive";
@@ -76,39 +77,44 @@ function validate(){
 
     // weight
     let weightError="";
-    if(productWeight === "" && weightFlag == false){
-        weightError="empty";
+    if(!pattern1.test(productWeight) && weightFlag == false){
+        weightError="invalid input";
         weightFlag=true;
+    }
+    else if(productWeight<0 && weightFlag == false){
+        weightError="weight cannot be negetive";
+        weightFlag = true;
+    }
+    else if(productWeight == 0 && weightFlag == false){
+        weightError = "Weight cannot be zero";
+        weightFlag = true
     }
 
     // company details
         // company name
         let companyNameError = "";
-        if(companyFlag == false){
-            if(companyName === ""){
-                companyNameError = "empty";
-            }
-            else if(!pattern.test(companyName)){
-                companyNameError = "Invalid input";
-                
-            }
+        if(companyName === "" && companyFlag == false){
+            companyNameError = "Name field is empty";
+            companyFlag = true;
+        } 
+        else if(!pattern.test(productName) && companyFlag == false){
+            companyNameError = "invalid input";
             companyFlag = true;
         }
 
 
         // company address
         let companyAddressError = "";
-            if (companyAdd === "" && companyFlag === false) {
-                companyAddressError = "empty";
-            }
+        if(companyAdd === "" && companyFlag == false){
+            companyAddressError = "input empty";
+            companyFlag = true;
+        }
 
         // company date
         let companyDateError = "";
-        if (companyFlag === false) {
-            if (companyDate === "") {
-                companyDateError = "Date not valid.";
-            }
-        companyFlag = true;
+        if(companyDate === "" && companyFlag == false){
+            companyDateError="invalid input"
+            companyFlag = true;
         }
     
     document.getElementById('p-id').innerHTML=idError;
@@ -125,6 +131,17 @@ function validate(){
     return idError === "" && partError === "" && nameError === "" && colorError === "" && sizeError === "" && descError === "" && weightError === "" && companyNameError === "" && companyAddressError === "" && companyDateError === "";
 }
 
+function check(name) {
+    let pName = name;
+    console.log(pName);
+    const existsName = products.some((item)=>item.name.toLowerCase() === pName.toLowerCase());
+    if (existsName) {
+        document.getElementById('p-name').innerHTML = "Data already exists";
+    }
+    return existsName;
+}
+
+
 
 
 function getData(){
@@ -138,6 +155,7 @@ function getData(){
     document.getElementById('d-btn').style.display="none";
     document.getElementById('p-weight').style.display="none";
 
+   
 
 
 
@@ -169,6 +187,11 @@ function getData(){
     companyDetails.push(companyDate);
 
 
+    // if(check(productName)){
+    //     return;
+    // }
+    
+
 
     if(edit !== null){
         products[edit].id = productId;
@@ -182,16 +205,21 @@ function getData(){
         edit = null;
     }
     else{
-    let productObj = {
-        id: productId,
-        partno: productPartNo,
-        name: productName,
-        size: productSize,
-        color: pColor,
-        desc: productDesc,
-        weight: productWeight,
-        company: companyDetails
-        };
+
+        if(check(productName)){
+            return;
+        }
+
+        let productObj = {
+            id: productId,
+            partno: productPartNo,
+            name: productName,
+            size: productSize,
+            color: pColor,
+            desc: productDesc,
+            weight: productWeight,
+            company: companyDetails
+            };
         products.push(productObj);
     }
     resetForm();
@@ -260,7 +288,7 @@ function removeName(){
         products.splice(index, 1);
         printData(products)
     }else{
-        console.log('name not found')
+        alert('name not found');
         printData(products)
     }
 }
@@ -276,7 +304,7 @@ function removeId(){
         products.splice(index,1)
         printData(products)
     }else{
-        console.log('id not found')
+        alert('id not found')
         printData(products)
     }
 }
@@ -306,10 +334,14 @@ function modifyName(){
         
         document.getElementById('description').value=arrName[0].desc;
         document.getElementById('weight').value=arrName[0].weight;
+        document.getElementById('company').value=arrId[0].company[0];
+        document.getElementById('company-add').value=arrId[0].company[1];
+        document.getElementById('date').value=arrId[0].company[2];
+
         
     }
     else{
-        console.log('name not found')
+        alert('name not found')
     }
 }
 
@@ -338,11 +370,13 @@ function modifyId(){
         
         document.getElementById('description').value=arrId[0].desc;
         document.getElementById('weight').value=arrId[0].weight;
+        document.getElementById('company').value=arrId[0].company[0];
+        document.getElementById('company-add').value=arrId[0].company[1];
+        document.getElementById('date').value=arrId[0].company[2];
         
     }
     else{
-        console.log('ID not found')
-        alert("ID not found!")
+        alert("ID not found!");
     }
 }
 
@@ -425,6 +459,9 @@ function cDone(){
     document.getElementById('c-name').style.display="none";
     document.getElementById('c-add').style.display="none";
     document.getElementById('c-date').style.display="none";
+    document.getElementById('company').value="";
+    document.getElementById('company-add').value="";
+    document.getElementById('date').value="";
 }
 
 

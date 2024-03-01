@@ -18,6 +18,7 @@ function validate() {
     let space = /^[^\s]+$/;
     let hyphen = /^(?!0\d)\d+$/;
     
+    
     let nameError = '';
     if(productName === ""){
         nameError = "Name field is empty";  
@@ -127,6 +128,7 @@ function validate() {
 }
 
 function check(productName) {
+    console.log(productName)
     if (typeof productName === 'string') {
         return products.some(product => product.name.toLowerCase() === productName.toLowerCase())
     }
