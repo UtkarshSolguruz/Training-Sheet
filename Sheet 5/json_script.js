@@ -4,175 +4,175 @@ let weightFlag = true;
 let companyFlag = true;
 
 
-function validate(){
-    let productId = document.getElementById('id').value;
-    let productPartNo = document.getElementById('partno').value;
-    let productName = document.getElementById('name').value;
-    let productSize = document.querySelector('input[name="size"]:checked');
-    let productColor = document.querySelectorAll('input[type="checkbox"]:checked');
-    let productDesc = document.getElementById('description').value;
-    let productWeight = document.getElementById('weight').value;
-    let companyName = document.getElementById('company').value;
-    let companyAdd = document.getElementById('company-add').value;
-    let companyDate = document.getElementById('date').value;
+// function validate(){
+//     let productId = document.getElementById('id').value;
+//     let productPartNo = document.getElementById('partno').value;
+//     let productName = document.getElementById('name').value;
+//     let productSize = document.querySelector('input[name="size"]:checked');
+//     let productColor = document.querySelectorAll('input[type="checkbox"]:checked');
+//     let productDesc = document.getElementById('description').value;
+//     let productWeight = document.getElementById('weight').value;
+//     let companyName = document.getElementById('company').value;
+//     let companyAdd = document.getElementById('company-add').value;
+//     let companyDate = document.getElementById('date').value;
 
 
-    // validation regular expressions
-    let pattern = /^(?![\s\d])[a-zA-Z]+(?:[\s]{1}[a-zA-Z]+)*[\s]*$/;
-    let pattern1 = /^[+-]?[0-9]+$/
-    let spaceRegex = /^[^ ]/;
-    let twoSpace = /^(?:(?!\s\s).)*$/;
-    let numbers = /^([^0-9]*)$/;
-    let specialCharacters = /^[a-zA-Z0-9_]+$/;
-    let space = /^[^\s]+$/;
-    let hyphen = /[-]/;
+//     // validation regular expressions
+//     let pattern = /^(?![\s\d])[a-zA-Z]+(?:[\s]{1}[a-zA-Z]+)*[\s]*$/;
+//     let pattern1 = /^[+-]?[0-9]+$/
+//     let spaceRegex = /^[^ ]/;
+//     let twoSpace = /^(?:(?!\s\s).)*$/;
+//     let numbers = /^([^0-9]*)$/;
+//     let specialCharacters = /^[a-zA-Z0-9_]+$/;
+//     let space = /^[^\s]+$/;
+//     let hyphen = /[-]/;
 
 
-    // id
-    let idError = "";
-    if(!pattern1.test(productId)){
-        idError = "input cannot be empty and special characters cannot be used  "
-    }
-    if(productId<0){
-        idError="ID cannot be negetive";
-    }
-    else if(productId>10000){
-        idError="Id should be less than 10000"
-    }
+//     // id
+//     let idError = "";
+//     if(!pattern1.test(productId)){
+//         idError = "input cannot be empty and special characters cannot be used  "
+//     }
+//     if(productId<0){
+//         idError="ID cannot be negetive";
+//     }
+//     else if(productId>10000){
+//         idError="Id should be less than 10000"
+//     }
     
 
 
-    // partno
-    let partError = "";
+//     // partno
+//     let partError = "";
 
-    if(productPartNo == "") {
-        partError = "Input Field Empty";
-        console.log("hey")
-    }
-    else if(hyphen.test(productPartNo.toString())){
-        partError = "invalid input"
-        console.log("hello")
-    }
-    else if(!specialCharacters.test(productPartNo)){
-        partError = "special characters not allowed"
-    }
-    else if(!startWithZero.test(productPartNo)){
-        partError = "Quantity should not start with zero.";
-    }
-    else if(productPartNo < 1){
-        partError = "only positive numbers are allowed";
-    }
-    else if(!spaceRegex.test(productPartNo)){
-        partError = "field should not start with a blank space";
-    }
-    else if(!space.test(productPartNoy)){
-        partError = "cannot have space between numbers";
-    }
-    else if(!onlyNumbers.test(productPartNo)){
-        partError = "only numbers are required for this field";
-    }
-    else if(productPartNo>10000){
-        partError = "quantity should be less than 10000.";
-    }
+//     if(productPartNo == "") {
+//         partError = "Input Field Empty";
+//         console.log("hey")
+//     }
+//     else if(hyphen.test(productPartNo.toString())){
+//         partError = "invalid input"
+//         console.log("hello")
+//     }
+//     else if(!specialCharacters.test(productPartNo)){
+//         partError = "special characters not allowed"
+//     }
+//     else if(!startWithZero.test(productPartNo)){
+//         partError = "Quantity should not start with zero.";
+//     }
+//     else if(productPartNo < 1){
+//         partError = "only positive numbers are allowed";
+//     }
+//     else if(!spaceRegex.test(productPartNo)){
+//         partError = "field should not start with a blank space";
+//     }
+//     else if(!space.test(productPartNoy)){
+//         partError = "cannot have space between numbers";
+//     }
+//     else if(!onlyNumbers.test(productPartNo)){
+//         partError = "only numbers are required for this field";
+//     }
+//     else if(productPartNo>10000){
+//         partError = "quantity should be less than 10000.";
+//     }
 
-    // name
-    let nameError = '';
-    if(productName === ""){
-        nameError = "Name field is empty";  
-    }
-    else if(hyphen.test(productName)){
-        nameError = "hyphens are not allowed in this form."
-    }
-    else if(!spaceRegex.test(productName)){
-        nameError = "Product name should not start with a blank space";
-    }
-    else if (!twoSpace.test(productName)){
-        nameError = "Product name should not have more than one space in between";
-    }
-    else if(!numbers.test(productName)){
-        nameError = "numbers should not be present"
-    }
-    else if(!specialCharacters.test(productName)){
-        nameError = "special characters are not allowed"
-    }
+//     // name
+//     let nameError = '';
+//     if(productName === ""){
+//         nameError = "Name field is empty";  
+//     }
+//     else if(hyphen.test(productName)){
+//         nameError = "hyphens are not allowed in this form."
+//     }
+//     else if(!spaceRegex.test(productName)){
+//         nameError = "Product name should not start with a blank space";
+//     }
+//     else if (!twoSpace.test(productName)){
+//         nameError = "Product name should not have more than one space in between";
+//     }
+//     else if(!numbers.test(productName)){
+//         nameError = "numbers should not be present"
+//     }
+//     else if(!specialCharacters.test(productName)){
+//         nameError = "special characters are not allowed"
+//     }
 
-    // checkbox
-    let colorError = "";
-    if(productColor.length === 0){
-        colorError = "product cannot be colorless";
-    }
+//     // checkbox
+//     let colorError = "";
+//     if(productColor.length === 0){
+//         colorError = "product cannot be colorless";
+//     }
 
-    // radio button
-    let sizeError = "";
-    if(!productSize){
-        sizeError="please select a size";
-    }
+//     // radio button
+//     let sizeError = "";
+//     if(!productSize){
+//         sizeError="please select a size";
+//     }
 
-    // description
-    let descError = "";
-    if(productDesc === ""){
-        descError="Input Empty";
-    }
+//     // description
+//     let descError = "";
+//     if(productDesc === ""){
+//         descError="Input Empty";
+//     }
 
-    // weight
-    let weightError="";
-    if(!pattern1.test(productWeight) && weightFlag == false){
-        weightError="invalid input";
-        weightFlag=true;
-    }
-    else if(productWeight<0 && weightFlag == false){
-        weightError="weight cannot be negetive";
-        weightFlag = true;
-    }
-    else if(productWeight == 0 && weightFlag == false){
-        weightError = "Weight cannot be zero";
-        weightFlag = true
-    }
-    else if(productWeight>1000 && weightFlag == false){
-        weightError="weight connot be more than 1000";
-        weightFlag=true;
-    }
+//     // weight
+//     let weightError="";
+//     if(!pattern1.test(productWeight) && weightFlag == false){
+//         weightError="invalid input";
+//         weightFlag=true;
+//     }
+//     else if(productWeight<0 && weightFlag == false){
+//         weightError="weight cannot be negetive";
+//         weightFlag = true;
+//     }
+//     else if(productWeight == 0 && weightFlag == false){
+//         weightError = "Weight cannot be zero";
+//         weightFlag = true
+//     }
+//     else if(productWeight>1000 && weightFlag == false){
+//         weightError="weight connot be more than 1000";
+//         weightFlag=true;
+//     }
 
-    // company details
-        // company name
-        let companyNameError = "";
-        if(companyName === "" && companyFlag == false){
-            companyNameError = "Name field is empty";
-            companyFlag = true;
-        } 
-        else if(!pattern.test(productName) && companyFlag == false){
-            companyNameError = "invalid input";
-            companyFlag = true;
-        }
+//     // company details
+//         // company name
+//         let companyNameError = "";
+//         if(companyName === "" && companyFlag == false){
+//             companyNameError = "Name field is empty";
+//             companyFlag = true;
+//         } 
+//         else if(!pattern.test(productName) && companyFlag == false){
+//             companyNameError = "invalid input";
+//             companyFlag = true;
+//         }
 
 
-        // company address
-        let companyAddressError = "";
-        if(companyAdd === "" && companyFlag == false){
-            companyAddressError = "input empty";
-            companyFlag = true;
-        }
+//         // company address
+//         let companyAddressError = "";
+//         if(companyAdd === "" && companyFlag == false){
+//             companyAddressError = "input empty";
+//             companyFlag = true;
+//         }
 
-        // company date
-        let companyDateError = "";
-        if(companyDate === "" && companyFlag == false){
-            companyDateError="invalid input"
-            companyFlag = true;
-        }
+//         // company date
+//         let companyDateError = "";
+//         if(companyDate === "" && companyFlag == false){
+//             companyDateError="invalid input"
+//             companyFlag = true;
+//         }
     
-    document.getElementById('p-id').innerHTML=idError;
-    document.getElementById('p-partno').innerHTML=partError;
-    document.getElementById('p-name').innerHTML=nameError;
-    document.getElementById('color').innerHTML=colorError;
-    document.getElementById('size').innerHTML=sizeError;
-    document.getElementById('p-description').innerHTML=descError;
-    document.getElementById('p-weight').innerHTML=weightError;
-    document.getElementById('c-name').innerHTML=companyNameError;
-    document.getElementById('c-add').innerHTML=companyAddressError;
-    document.getElementById('c-date').innerHTML=companyDateError;
+//     document.getElementById('p-id').innerHTML=idError;
+//     document.getElementById('p-partno').innerHTML=partError;
+//     document.getElementById('p-name').innerHTML=nameError;
+//     document.getElementById('color').innerHTML=colorError;
+//     document.getElementById('size').innerHTML=sizeError;
+//     document.getElementById('p-description').innerHTML=descError;
+//     document.getElementById('p-weight').innerHTML=weightError;
+//     document.getElementById('c-name').innerHTML=companyNameError;
+//     document.getElementById('c-add').innerHTML=companyAddressError;
+//     document.getElementById('c-date').innerHTML=companyDateError;
     
-    return idError === "" && partError === "" && nameError === "" && colorError === "" && sizeError === "" && descError === "" && weightError === "" && companyNameError === "" && companyAddressError === "" && companyDateError === "";
-}
+//     return idError === "" && partError === "" && nameError === "" && colorError === "" && sizeError === "" && descError === "" && weightError === "" && companyNameError === "" && companyAddressError === "" && companyDateError === "";
+// }
 
 function check(name) {
     let pName = name;
@@ -188,9 +188,9 @@ function check(name) {
 
 
 function getData(){
-    if(!validate()){
-        return;
-    }
+    // if(!validate()){
+    //     return;
+    // }
     
     // weight form
     document.getElementById('weight').style.display="none";
@@ -443,7 +443,7 @@ function sort(){
             products.sort((x,y) => y.partno - x.partno);
             break;
         case "name":
-            products.sort()
+            products.sort((x,y)=>y.productName.localeCompare(x.productName))
             break;
     }
     printData(products)
@@ -459,7 +459,7 @@ function searchData(){
         printData(fProducts);
     }else{
         printData(products);
-    }
+        }
 }
 
 function addWeight(){

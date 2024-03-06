@@ -109,6 +109,7 @@ const json = {
   ],
 };
 
+
 const img_url = "https://kf-dev-assets.s3.ap-southeast-2.amazonaws.com/product/2b3da5c7-09bc-45aa-b0a6-be3378516519.jpg";
 let image = document.getElementById('images')
 image.src = img_url
@@ -149,15 +150,16 @@ function printData(){
   for(let i = 0; i<json.inventory_detail.length;i++){
     let a = json.inventory_detail[i].quantity_detail;
     let expire = a.map((item)=>item.expiry_date)
-
-    let newRow = `<tr>
+    let b = a.reduce((total,item)=>total + item.remaining_quantity, 0)
+    let newRow = `<tr>  
                     <td>${i+1}</td>
-                    <td>${json.inventory_detail[i].remaining_quantity}</td>
-                    <td>${json.inventory_detail[i].created_at}</td>
-                    <td>${expire[0]}</td>
+                    <td>${b}</td>
+                    <td>${json.inventory_detail[i].created_at.split('T')[0]}</td>
+                    <td>${expire}</td>
                   </tr>`
     table.innerHTML+=newRow;
   }
+
 }
 
 printData()
