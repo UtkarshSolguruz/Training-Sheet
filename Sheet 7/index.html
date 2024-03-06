@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <div class="form">
+          <table cellspacing="15">
+            <tr>
+              <td class="label">Product Name:</td>
+              <td><input type="text" class="form-input" id="p-name"/></td>
+            </tr>
+            <tr><td id="reg-p-name" colspan="2" style="color: red;"></td></tr>
+            <tr>
+              <td class="label">Product Quantity:</td>
+              <td><input type="number" class="form-input" id="p-quantity"/></td>
+            </tr>
+            <tr><td id="reg-p-quantity" style="color: red;"></td></tr>
+            <tr>
+              <td class="label">Product Price:</td>
+              <td><input type="number" class="form-input" id="p-price"/></td>
+            </tr>
+            <tr><td id="reg-p-price" style="color: red;"></td></tr>
+            <tr>
+              <td class="label">Product SKU:</td>
+              <td><input type="text" class="form-input" id="p-sku"/></td>
+            </tr>
+            <tr><td id="reg-p-sku" style="color: red;"></td></tr>
+            <tr>
+              <td class="label">Description:</td>
+              <td><input type="text" class="form-input" id="p-desc"/></td>
+            </tr>
+            <tr><td id="reg-p-desc" style="color: red;"></td></tr>
+            <tr>
+              <td>
+                <button id="submit-btn" onclick="getData()">Submit</button>
+              </td>
+              <td align="right">
+                <button id="reset-btn" onclick="resetForm()">Reset</button>
+              </td>
+            </tr>
+          </table>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search a Product" id="search">
+        <button onclick="searchData()">Search</button>
+      </div>
+      <div class="printingcontent">
+        <table id="printtable">
+            <tr>
+                <th>Sr. No.</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>SKU</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            <tbody align="center" id="values">
+              
+            </tbody>
+        </table>
+      </div>
+  <script src="script.js"></script>
+  </body>
+</html>
