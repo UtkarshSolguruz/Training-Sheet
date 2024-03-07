@@ -1,12 +1,12 @@
 type IndividualProduct = {
     name: string,
     quantity: string,
-    price: string,
-    sku: string,
+    price: number,
+    sku: number,
     description: string
 }
 
-let editIndex:any = null;
+let editIndex = null;
 let products: IndividualProduct[] = [];
 
 function validate(): boolean{
@@ -60,7 +60,7 @@ function validate(): boolean{
     // else if(!hyphen.test(productQuantity.value)){
     //     quantityError = "invalid input"
     // }
-    else if(!specialCharacters.test(productQuantity.value)){
+    else if(specialCharacters.test(productQuantity.value)){
         quantityError = "special characters not allowed"
     }
     else if(!startWithZero.test(productQuantity.value)){
@@ -87,9 +87,9 @@ function validate(): boolean{
     if(productPrice.value === ""){
         priceError = "Price field cannot be empty";
     }
-    else if(!specialCharacters.test(productPrice.value)){
-        priceError = "special characters are not allowed";
-    }
+    // else if(!specialCharacters.test(productPrice.value)){
+    //     priceError = "special characters are not allowed";
+    // }
     else if(parseInt(productPrice.value)<1){
         priceError = "Price should be greater than 0";
     }
@@ -160,8 +160,8 @@ function getData(): void{
     if(editIndex !== null){
         products[editIndex].name = productName.value;
         products[editIndex].quantity = productQuantity.value;
-        products[editIndex].price = productPrice.value;
-        products[editIndex].sku = productSku.value;
+        products[editIndex].price = parseInt(productPrice.value);
+        products[editIndex].sku = parseInt(productSku.value);
         products[editIndex].description = productDescription.value;
         editIndex = null;
     } 
@@ -169,8 +169,8 @@ function getData(): void{
         let productObj: IndividualProduct = {
             name: productName.value,
             quantity: productQuantity.value,
-            price: productPrice.value,
-            sku: productSku.value,
+            price: parseInt(productPrice.value),
+            sku: parseInt(productSku.value),
             description: productDescription.value
         };
         products.push(productObj);
