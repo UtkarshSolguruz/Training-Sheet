@@ -4,9 +4,7 @@ let count = null;
 let weightFlag = true;
 let companyFlag = true;
 let counterObj = {};
-let counterEdit = [];
 let sortArr = [];
-
 
 
 function validate(){
@@ -295,28 +293,63 @@ function validate(){
     });
 
 
-function checkName(name) {
-    let pName = name;
-    for(let i in counterObj){
-        const existsName = counterObj[i].some((item)=>item.name.toLowerCase() === pName.toLowerCase());   
-        if (existsName) {
-            document.getElementById('p-name').innerHTML = "Name already exists";
+// function checkName(name) {
+//     let pName = name;
+//     for(let i in counterObj){
+//         const existsName = counterObj[i].some((item)=>item.name.toLowerCase() === pName.toLowerCase());   
+//         if (existsName) {
+//             document.getElementById('p-name').innerHTML = "Name already exists";
+//         }
+//         return existsName;
+//     }
+// }
+
+
+// function checkId(id){
+//     let pId = id;
+//     for(let i in counterObj){
+//     const existsId = counterObj[i].some((item)=>item.id === pId)
+//         if(existsId){
+//             document.getElementById('p-id').innerHTML = "Id already exists";
+//         } 
+//     return existsId;
+//     }
+// }
+
+
+function checkName(name, counter, editIndex) {
+    for (let i in counterObj) {
+        if (i !== counter) {
+            const existsName = counterObj[i].some((item, index) => {
+                return index !== editIndex && item.name.toLowerCase() === name.toLowerCase();
+            });
+
+            if (existsName) {
+                return true; 
+            }
         }
-        return existsName;
     }
+    return false; 
 }
 
 
-function checkId(id){
-    let pId = id;
-    for(let i in counterObj){
-    const existsId = counterObj[i].some((item)=>item.id === pId)
-        if(existsId){
-            document.getElementById('p-id').innerHTML = "Id already exists";
-        } 
-    return existsId;
+function checkId(id, counter, editIndex) {
+    for (let i in counterObj) {
+        if (i !== counter) {
+            const existsId = counterObj[i].some((item, index) => {
+                return index !== editIndex && item.id === id;
+            });
+
+            if (existsId) {
+                return true;
+            }
+        }
     }
+    return false; 
 }
+
+
+
 
 function getData(){
     if(!validate()){
@@ -365,15 +398,21 @@ function getData(){
         cadd: companyAdd,
         cdate: companyDate
     }
+
     
-    if(!counterEdit.includes(productCounter)){
-        counterEdit.push(productCounter)
+    if(checkName(productName,count,edit)){
+        document.getElementById('p-name').innerHTML="name already exists";
+        return;
     }
 
-    
-    
-    if(edit !== null && count!==null){        
+    if(checkId(productId,count,edit)){
+        document.getElementById('p-id').innerHTML="ID already exists";
+        return;
+    }
 
+
+    
+    if(edit !== null && count !== null){        
         counterObj[count][edit].id = productId;
         counterObj[count][edit].partno = productPartNo;
         counterObj[count][edit].name = productName;
@@ -386,14 +425,6 @@ function getData(){
         count = null;
     }
     else{
-
-        if(checkName(productName)){
-            return;
-        }
-        if(checkId(productId)){
-            return;
-        }
-
         
         let productObj = {
             id: productId,
@@ -416,7 +447,8 @@ function getData(){
             counterObj[key] = [productObj];
         }
 
-        console.log(counterObj)
+        // console.log(counterObj)
+
     }
     resetForm();
     printData(counterObj);
@@ -560,12 +592,14 @@ function modifyName(){
                 document.getElementById('counter').value=i;   
                 document.getElementById('counter').disabled = true;             
             }
-            counterEdit.map((item,index)=>{
-                edit = index;
-                count = item;
-            })
+            for(let i in counterObj){
+                counterObj[i].map((item,index)=>{
+                    count = i;
+                    edit = index;
+           })
         }
     }   
+}
 }
 
 function modifyId(){
@@ -592,10 +626,12 @@ function modifyId(){
                 document.getElementById('counter').value=i;   
                 document.getElementById('counter').disabled = true;             
             }
-            counterEdit.map((item,index)=>{
-                edit = index;
-                count = item;
-            })
+            for(let i in counterObj){
+                counterObj[i].map((item,index)=>{
+                    count = i;
+                    edit = index;
+                })
+            }
         }
     } 
 }
@@ -698,12 +734,3 @@ function cDone(){
     document.getElementById('company-add').value="";
     document.getElementById('date').value="";
 }
-
-
-
-
-
-
-
-
-

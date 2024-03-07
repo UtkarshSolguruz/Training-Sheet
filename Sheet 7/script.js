@@ -42,13 +42,13 @@ function validate() {
     // else if(!hyphen.test(productQuantity.value)){
     //     quantityError = "invalid input"
     // }
-    else if (!specialCharacters.test(productQuantity.value)) {
+    else if (specialCharacters.test(productQuantity.value)) {
         quantityError = "special characters not allowed";
     }
     else if (!startWithZero.test(productQuantity.value)) {
         quantityError = "Quantity should not start with zero.";
     }
-    else if (productQuantity.value < 1) {
+    else if (parseInt(productQuantity.value) < 1) {
         quantityError = "only positive numbers are allowed";
     }
     else if (!spaceRegex.test(productQuantity.value)) {
@@ -60,7 +60,7 @@ function validate() {
     else if (!onlyNumbers.test(productQuantity.value)) {
         quantityError = "only numbers are required for this field";
     }
-    else if (productQuantity.value > 10000) {
+    else if (parseInt(productQuantity.value) > 10000) {
         quantityError = "quantity should be less than 10000.";
     }
     // price
@@ -68,16 +68,16 @@ function validate() {
     if (productPrice.value === "") {
         priceError = "Price field cannot be empty";
     }
-    else if (!specialCharacters.test(productPrice.value)) {
-        priceError = "special characters are not allowed";
-    }
-    else if (productPrice.value < 1) {
+    // else if(!specialCharacters.test(productPrice.value)){
+    //     priceError = "special characters are not allowed";
+    // }
+    else if (parseInt(productPrice.value) < 1) {
         priceError = "Price should be greater than 0";
     }
     else if (!startWithZero.test(productPrice.value)) {
         priceError = "Price should not start with 0";
     }
-    else if (productPrice.value > 100000) {
+    else if (parseInt(productPrice.value) > 100000) {
         priceError = "Price cannot be above 1 lakh.";
     }
     // sku
@@ -127,8 +127,8 @@ function getData() {
     if (editIndex !== null) {
         products[editIndex].name = productName.value;
         products[editIndex].quantity = productQuantity.value;
-        products[editIndex].price = productPrice.value;
-        products[editIndex].sku = productSku.value;
+        products[editIndex].price = parseInt(productPrice.value);
+        products[editIndex].sku = parseInt(productSku.value);
         products[editIndex].description = productDescription.value;
         editIndex = null;
     }
@@ -136,8 +136,8 @@ function getData() {
         var productObj = {
             name: productName.value,
             quantity: productQuantity.value,
-            price: productPrice.value,
-            sku: productSku.value,
+            price: parseInt(productPrice.value),
+            sku: parseInt(productSku.value),
             description: productDescription.value
         };
         products.push(productObj);
