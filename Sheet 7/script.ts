@@ -1,8 +1,8 @@
 type IndividualProduct = {
     name: string,
-    quantity: string,
+    quantity: number,
     price: number,
-    sku: number,
+    sku: number | string,
     description: string
 }
 
@@ -159,7 +159,7 @@ function getData(): void{
 
     if(editIndex !== null){
         products[editIndex].name = productName.value;
-        products[editIndex].quantity = productQuantity.value;
+        products[editIndex].quantity = parseInt(productQuantity.value);
         products[editIndex].price = parseInt(productPrice.value);
         products[editIndex].sku = parseInt(productSku.value);
         products[editIndex].description = productDescription.value;
@@ -168,7 +168,7 @@ function getData(): void{
     else{
         let productObj: IndividualProduct = {
             name: productName.value,
-            quantity: productQuantity.value,
+            quantity: parseInt(productQuantity.value),
             price: parseInt(productPrice.value),
             sku: parseInt(productSku.value),
             description: productDescription.value
@@ -236,7 +236,7 @@ function editRow(index:number): void{
     let productName = document.getElementById('p-name') as HTMLInputElement;
     productName.value = product.name;
     let productQuantity = document.getElementById('p-quantity') as HTMLInputElement;
-    productQuantity.value=product.quantity;
+    productQuantity.value=String(product.quantity);
     let productPrice = document.getElementById('p-price') as HTMLInputElement;
     productPrice.value=String(product.price);
     let productSku = document.getElementById('p-sku') as HTMLInputElement;
