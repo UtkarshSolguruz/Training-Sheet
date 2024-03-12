@@ -91,18 +91,20 @@
 
 
 
-function sum(a:number,b:number){
-    console.log(a+b);
-}
+// function sum(a:number,b:number){
+//     console.log(a+b);
+// }
 
 
-sum(10,20);
+// sum(10,20);
 
 
-function printHelloWorld(a:number){
-    console.log("hello world!")
-    console.log(a)
-}
+// function printHelloWorld(a:number){
+//     console.log("hello world!")
+//     console.log(a)
+// }
     
-printHelloWorld(1)
+// printHelloWorld(10)
+
+
 

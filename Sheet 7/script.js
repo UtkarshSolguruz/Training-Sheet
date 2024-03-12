@@ -1,19 +1,20 @@
-var editIndex = null;
-var products = [];
+"use strict";
+let editIndex = null;
+let products = [];
 function validate() {
-    var productName = document.getElementById('p-name');
-    var productQuantity = document.getElementById('p-quantity');
-    var productPrice = document.getElementById('p-price');
-    var productSku = document.getElementById('p-sku');
-    var productDescription = document.getElementById('p-desc');
+    let productName = document.getElementById('p-name');
+    let productQuantity = document.getElementById('p-quantity');
+    let productPrice = document.getElementById('p-price');
+    let productSku = document.getElementById('p-sku');
+    let productDescription = document.getElementById('p-desc');
     // name
-    var spaceRegex = /^[^ ]/;
-    var twoSpace = /^(?:(?!\s\s).)*$/;
-    var numbers = /^([^0-9]*)$/;
-    var space = /^[^\s]+$/;
-    var hyphen = /-/;
-    var specialCharacters = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
-    var nameError = '';
+    let spaceRegex = /^[^ ]/;
+    let twoSpace = /^(?:(?!\s\s).)*$/;
+    let numbers = /^([^0-9]*)$/;
+    let space = /^[^\s]+$/;
+    let hyphen = /-/;
+    let specialCharacters = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
+    let nameError = '';
     if (productName.value === "") {
         nameError = "Field cannot be empty";
     }
@@ -33,9 +34,9 @@ function validate() {
         nameError = "special characters are not allowed";
     }
     // quantity
-    var onlyNumbers = /^[0-9]+$/;
-    var startWithZero = /^[1-9]\d*$/;
-    var quantityError = '';
+    let onlyNumbers = /^[0-9]+$/;
+    let startWithZero = /^[1-9]\d*$/;
+    let quantityError = '';
     if (productQuantity.value === "") {
         quantityError = "Quantity field should not be empty";
     }
@@ -64,7 +65,7 @@ function validate() {
         quantityError = "quantity should be less than 10000.";
     }
     // price
-    var priceError = "";
+    let priceError = "";
     if (productPrice.value === "") {
         priceError = "Price field cannot be empty";
     }
@@ -81,8 +82,8 @@ function validate() {
         priceError = "Price cannot be above 1 lakh.";
     }
     // sku
-    var skuError = '';
-    var specialCharacter = /^[^!@#$%^&*()_+={}[\]:;<>,.?/~`\\|"' ]+$/;
+    let skuError = '';
+    let specialCharacter = /^[^!@#$%^&*()_+={}[\]:;<>,.?/~`\\|"' ]+$/;
     if (productSku.value === "") {
         skuError = "Sku field cannot be empty";
     }
@@ -96,19 +97,19 @@ function validate() {
     //     skuError = "Spaces between characters are not allowed"
     // }
     // description
-    var descError = "";
+    let descError = "";
     if (productDescription.value === "") {
         descError = "Description cannot be empty";
     }
-    var a = document.getElementById('reg-p-name');
+    let a = document.getElementById('reg-p-name');
     a.innerHTML = nameError;
-    var b = document.getElementById('reg-p-quantity');
+    let b = document.getElementById('reg-p-quantity');
     b.innerHTML = quantityError;
-    var c = document.getElementById('reg-p-price');
+    let c = document.getElementById('reg-p-price');
     c.innerHTML = priceError;
-    var d = document.getElementById('reg-p-sku');
+    let d = document.getElementById('reg-p-sku');
     d.innerHTML = skuError;
-    var e = document.getElementById('reg-p-desc');
+    let e = document.getElementById('reg-p-desc');
     e.innerHTML = descError;
     return nameError === '' && quantityError === '' && priceError === '' && skuError === '' && descError == '';
 }
@@ -116,11 +117,11 @@ function getData() {
     if (!validate()) {
         return;
     }
-    var productName = document.getElementById('p-name');
-    var productQuantity = document.getElementById('p-quantity');
-    var productPrice = document.getElementById('p-price');
-    var productSku = document.getElementById('p-sku');
-    var productDescription = document.getElementById('p-desc');
+    let productName = document.getElementById('p-name');
+    let productQuantity = document.getElementById('p-quantity');
+    let productPrice = document.getElementById('p-price');
+    let productSku = document.getElementById('p-sku');
+    let productDescription = document.getElementById('p-desc');
     if (exists(productName.value)) {
         return;
     }
@@ -133,7 +134,7 @@ function getData() {
         editIndex = null;
     }
     else {
-        var productObj = {
+        let productObj = {
             name: productName.value,
             quantity: productQuantity.value,
             price: parseInt(productPrice.value),
@@ -147,20 +148,28 @@ function getData() {
     printData(products);
 }
 function exists(name) {
-    var productName = name.toString();
-    var regPName = document.getElementById('reg-p-name');
-    if (products.some(function (product) { return product.name.toLowerCase() === productName.toLowerCase(); })) {
+    const productName = name.toString();
+    const regPName = document.getElementById('reg-p-name');
+    if (editIndex === null && products.some(product => product.name.toLowerCase() === productName.toLowerCase())) {
         regPName.textContent = "Name already exists";
         return true;
     }
-    regPName.textContent = ""; // Clear the message if the name is valid
+    regPName.textContent = "";
     return false;
 }
 function printData(products) {
-    var tableBody = document.getElementById('values');
+    let tableBody = document.getElementById('values');
     tableBody.innerHTML = "";
-    products.map(function (value, index) {
-        var newRow = "<tr>   \n                    <td>".concat(index + 1, "</td>\n                    <td>").concat(value.name, "</td>\n                    <td>").concat(value.quantity, "</td>\n                    <td>").concat(value.price, "</td>\n                    <td>").concat(value.sku, "</td>\n                    <td>").concat(value.description, "</td>\n                    <td><button onclick=\"editRow(").concat(index, ")\" id=\"edit\">Edit</button><button onclick=\"deleteRow(").concat(index, ")\" id=\"delete\">Delete</button></td>\n                </tr>");
+    products.map((value, index) => {
+        let newRow = `<tr>   
+                    <td>${index + 1}</td>
+                    <td>${value.name}</td>
+                    <td>${value.quantity}</td>
+                    <td>${value.price}</td>
+                    <td>${value.sku}</td>
+                    <td>${value.description}</td>
+                    <td><button onclick="editRow(${index})" id="edit">Edit</button><button onclick="deleteRow(${index})" id="delete">Delete</button></td>
+                </tr>`;
         tableBody.innerHTML += newRow;
     });
 }
@@ -173,36 +182,36 @@ function deleteRow(index) {
     printData(products);
 }
 function editRow(index) {
-    var product = products[index];
-    var productName = document.getElementById('p-name');
+    let product = products[index];
+    let productName = document.getElementById('p-name');
     productName.value = product.name;
-    var productQuantity = document.getElementById('p-quantity');
+    let productQuantity = document.getElementById('p-quantity');
     productQuantity.value = product.quantity;
-    var productPrice = document.getElementById('p-price');
-    productPrice.value = product.price;
-    var productSku = document.getElementById('p-sku');
-    productSku.value = product.sku;
-    var productDescription = document.getElementById('p-desc');
+    let productPrice = document.getElementById('p-price');
+    productPrice.value = String(product.price);
+    let productSku = document.getElementById('p-sku');
+    productSku.value = String(product.sku);
+    let productDescription = document.getElementById('p-desc');
     productDescription.value = product.description;
     editIndex = index;
 }
 function resetForm() {
-    var productName = document.getElementById('p-name');
+    let productName = document.getElementById('p-name');
     productName.value = "";
-    var productQuantity = document.getElementById('p-quantity');
+    let productQuantity = document.getElementById('p-quantity');
     productQuantity.value = "";
-    var productPrice = document.getElementById('p-price');
+    let productPrice = document.getElementById('p-price');
     productPrice.value = "";
-    var productSku = document.getElementById('p-sku');
+    let productSku = document.getElementById('p-sku');
     productSku.value = "";
-    var productDescription = document.getElementById('p-desc');
+    let productDescription = document.getElementById('p-desc');
     productDescription.value = "";
     document.getElementById('submit-btn').innerText = "Submit";
     editIndex = null;
 }
 function searchData() {
-    var searchInput = document.getElementById('search');
-    var fProducts = products.filter(function (item) {
+    let searchInput = document.getElementById('search');
+    let fProducts = products.filter((item) => {
         return item.name.toLowerCase().includes(searchInput.value.toLowerCase());
     });
     console.log(fProducts);
@@ -212,7 +221,7 @@ function searchData() {
     else {
         printData(products);
     }
-    searchInput.addEventListener('input', function () {
+    searchInput.addEventListener('input', () => {
         if (searchInput.value === "") {
             printData(products);
         }

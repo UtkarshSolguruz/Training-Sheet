@@ -1,16 +1,16 @@
 type IndividualProduct = {
     name: string,
-    quantity: string,
+    quantity: number,
     price: number,
-    sku: number,
+    sku: number | string,
     description: string
 }
 
-let editIndex = null;
+let editIndex:number | null = null;
 let products: IndividualProduct[] = [];
 
 function validate(): boolean{
-    let productName = document.getElementById('p-name') as HTMLInputElement;
+    let productName = document.getElementById('p-name')as HTMLInputElement;
     let productQuantity = document.getElementById('p-quantity') as HTMLInputElement;
     let productPrice = document.getElementById('p-price') as HTMLInputElement;
     let productSku = document.getElementById('p-sku') as HTMLInputElement;
@@ -159,7 +159,7 @@ function getData(): void{
 
     if(editIndex !== null){
         products[editIndex].name = productName.value;
-        products[editIndex].quantity = productQuantity.value;
+        products[editIndex].quantity = parseInt(productQuantity.value);
         products[editIndex].price = parseInt(productPrice.value);
         products[editIndex].sku = parseInt(productSku.value);
         products[editIndex].description = productDescription.value;
@@ -168,7 +168,7 @@ function getData(): void{
     else{
         let productObj: IndividualProduct = {
             name: productName.value,
-            quantity: productQuantity.value,
+            quantity: parseInt(productQuantity.value),
             price: parseInt(productPrice.value),
             sku: parseInt(productSku.value),
             description: productDescription.value
@@ -183,16 +183,16 @@ function getData(): void{
 
 
 
-function exists(name: string): boolean {
+function exists(name:string): boolean {
     const productName = name.toString();
     const regPName = document.getElementById('reg-p-name') as HTMLElement;
 
-    if (products.some(product => product.name.toLowerCase() === productName.toLowerCase())) {
+    if (editIndex === null && products.some(product => product.name.toLowerCase() === productName.toLowerCase())) {
         regPName.textContent = "Name already exists";
         return true;
     }
 
-    regPName.textContent = ""; // Clear the message if the name is valid
+    regPName.textContent = "";  
     return false;
 }
 
@@ -236,11 +236,11 @@ function editRow(index:number): void{
     let productName = document.getElementById('p-name') as HTMLInputElement;
     productName.value = product.name;
     let productQuantity = document.getElementById('p-quantity') as HTMLInputElement;
-    productQuantity.value=product.quantity;
+    productQuantity.value=String(product.quantity);
     let productPrice = document.getElementById('p-price') as HTMLInputElement;
-    productPrice.value=product.price;
+    productPrice.value=String(product.price);
     let productSku = document.getElementById('p-sku') as HTMLInputElement;
-    productSku.value=product.sku;
+    productSku.value=String(product.sku);
     let productDescription = document.getElementById('p-desc') as HTMLTextAreaElement;
     productDescription.value=product.description; 
     editIndex = index;

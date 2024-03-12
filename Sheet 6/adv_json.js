@@ -317,11 +317,11 @@ function validate(){
 // }
 
 
-function checkName(name, counter, editIndex) {
+function checkName(name, count, edit) {
     for (let i in counterObj) {
-        if (i !== counter) {
+        if (i !== count) {
             const existsName = counterObj[i].some((item, index) => {
-                return index !== editIndex && item.name.toLowerCase() === name.toLowerCase();
+                return index !== edit && item.name.toLowerCase() === name.toLowerCase();
             });
 
             if (existsName) {
@@ -333,7 +333,7 @@ function checkName(name, counter, editIndex) {
 }
 
 
-function checkId(id, counter, editIndex) {
+function checkId(id, count, editIndex) {
     for (let i in counterObj) {
         if (i !== counter) {
             const existsId = counterObj[i].some((item, index) => {
@@ -409,7 +409,6 @@ function getData(){
         document.getElementById('p-id').innerHTML="ID already exists";
         return;
     }
-
 
     
     if(edit !== null && count !== null){        
@@ -635,6 +634,10 @@ function modifyId(){
         }
     } 
 }
+
+
+
+
 
 
 function sort() {
