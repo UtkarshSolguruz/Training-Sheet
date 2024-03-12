@@ -10,7 +10,7 @@ let editIndex:number | null = null;
 let products: IndividualProduct[] = [];
 
 function validate(): boolean{
-    let productName = document.getElementById('p-name') as HTMLInputElement;
+    let productName = document.getElementById('p-name')as HTMLInputElement;
     let productQuantity = document.getElementById('p-quantity') as HTMLInputElement;
     let productPrice = document.getElementById('p-price') as HTMLInputElement;
     let productSku = document.getElementById('p-sku') as HTMLInputElement;
